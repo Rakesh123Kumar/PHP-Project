@@ -1,0 +1,30 @@
+<?php
+include('../dbcon.php');
+	      if(isset($_POST['submit']))
+		  {
+			  $rollno= $_POST['rollno'];
+			  $name= $_POST['name'];
+			  $city= $_POST['city'];
+			  $pcon= $_POST['pcon'];
+			  $std= $_POST['std'];
+              $imagename = $_FILES['simg']['name'];
+			  $str="hello";
+			  $str=$_FILES['simg']['name'];
+			  //$folder="/xampp/htdocs/sms/dataimg";
+              $tempname = $_FILES['simg']['tmp_name'];
+			  //$folder = "../dataimg/$imagename"/".$filename;
+              move_uploaded_file($tempname,"../dataimg/$imagename");			  
+			  $qry="INSERT INTO student(`rollno`, `name`, `city`, `pcont`, `standard`,image) VALUES ('$rollno','$name','$city','$pcon','$std','$str')";
+
+			  $run= mysqli_query($con,$qry);
+			  
+			  if($run==true)
+			  {
+				  
+				  ?>
+				  <script>
+				    alert('Data Inserted Successfully. ');
+				   </script>   
+                <?php				   
+			  }
+		  
